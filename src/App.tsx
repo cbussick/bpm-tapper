@@ -1,11 +1,4 @@
-import {
-  Box,
-  ChakraProvider,
-  Container,
-  Grid,
-  Spacer,
-  Text,
-} from "@chakra-ui/react";
+import { Box, ChakraProvider, Container, Grid, Text } from "@chakra-ui/react";
 import React, { useState } from "react";
 import BTBpmDisplay from "./components/BTBpmDisplay/BTBpmDisplay";
 import { BTFooter } from "./components/BTFooter/BTFooter";
@@ -18,32 +11,27 @@ export const App = (): JSX.Element => {
 
   return (
     <ChakraProvider theme={customTheme}>
-      <Box textAlign="center" fontSize="xl">
-        <Box height="100vh">
-          <Grid templateColumns="repeat(1fr, 3)" gap={6} height="100%">
-            <BTHeader
-              setShowMilliseconds={setShowMilliseconds}
+      <Box textAlign="center" fontSize="xl" height="100vh">
+        <Grid templateColumns="repeat(1fr, 3)" gap={6} height="100%">
+          <BTHeader
+            setShowMilliseconds={setShowMilliseconds}
+            playAudio={playAudio}
+            setPlayAudio={setPlayAudio}
+          />
+
+          <Container maxW="8xl">
+            <Text fontSize="4xl" mb={9}>
+              Tap along to any song to figure out its tempo! 🎵
+            </Text>
+
+            <BTBpmDisplay
               playAudio={playAudio}
-              setPlayAudio={setPlayAudio}
+              showMilliseconds={showMilliseconds}
             />
+          </Container>
 
-            <Spacer />
-
-            <Container maxW="8xl">
-              <Text fontSize="4xl" mb={9}>
-                Tap along to any song to figure out its tempo! 🎵
-              </Text>
-
-              <BTBpmDisplay
-                playAudio={playAudio}
-                showMilliseconds={showMilliseconds}
-              />
-            </Container>
-            <Spacer />
-
-            <BTFooter />
-          </Grid>
-        </Box>
+          <BTFooter />
+        </Grid>
       </Box>
     </ChakraProvider>
   );
