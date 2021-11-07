@@ -30,7 +30,7 @@ function BTBpmDisplay(props: BTBpmDisplayProps): JSX.Element {
     <>
       <VStack spacing={3}>
         <ScaleFade initialScale={0.9} in={!isCalculating}>
-          <Text fontSize="2xl">Tap any key to start</Text>
+          <Text fontSize="2xl">Tap any key to start ⌨️</Text>
           <Text fontSize="md">
             For example the <Kbd>Spacebar</Kbd>
           </Text>
@@ -49,7 +49,11 @@ function BTBpmDisplay(props: BTBpmDisplayProps): JSX.Element {
           {/* `e.preventDefault()` in `onMouseDown` will prevent focusing the button after it is clicked
           This is important when users use the spacebar or enter for tapping, as having it focussed would lead
           to problems then */}
-          <Button onMouseDown={(e) => e.preventDefault()} onClick={resetBpm}>
+          <Button
+            onMouseDown={(e) => e.preventDefault()}
+            onClick={isCalculating ? resetBpm : undefined}
+            cursor={isCalculating ? undefined : "default"}
+          >
             Reset
           </Button>
         </ScaleFade>
