@@ -33,7 +33,7 @@ function BTBpmDisplay(props: BTBpmDisplayProps): JSX.Element {
         <Collapse in={!isCalculating}>
           <Text fontSize="2xl">Tap any key to start ⌨️</Text>
           <Text fontSize="md">
-            For example the <Kbd>Spacebar</Kbd>
+            💡 For example the <Kbd>Spacebar</Kbd>
           </Text>
         </Collapse>
         <Tooltip hasArrow label="Click to copy" placement="right">
