@@ -2,7 +2,7 @@ import {
   Box,
   ChakraProvider,
   Container,
-  Flex,
+  Grid,
   Spacer,
   Text,
 } from "@chakra-ui/react";
@@ -20,7 +20,7 @@ export const App = (): JSX.Element => {
     <ChakraProvider theme={customTheme}>
       <Box textAlign="center" fontSize="xl">
         <Box height="100vh">
-          <Flex direction="column" height="100%">
+          <Grid templateColumns="repeat(1fr, 3)" gap={6} height="100%">
             <BTHeader
               setShowMilliseconds={setShowMilliseconds}
               playAudio={playAudio}
@@ -42,7 +42,7 @@ export const App = (): JSX.Element => {
             <Spacer />
 
             <BTFooter />
-          </Flex>
+          </Grid>
         </Box>
       </Box>
     </ChakraProvider>

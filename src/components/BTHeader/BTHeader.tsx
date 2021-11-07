@@ -20,7 +20,13 @@ export const BTHeader = (props: BTHeaderProps): JSX.Element => {
   const volumeSwitchText = `Turn volume ${props.playAudio ? "off" : "on"}`;
 
   return (
-    <Grid templateColumns="repeat(3, 1fr)" gap={6} py={2}>
+    <Grid
+      as="header"
+      templateColumns="repeat(3, 1fr)"
+      gap={6}
+      py={2}
+      alignSelf="flex-start"
+    >
       <Spacer />
       <Heading size="lg">BPM tapper</Heading>
       <Flex justifySelf="flex-end">
