@@ -1,38 +1,25 @@
-import {
-  Box,
-  ChakraProvider,
-  Code,
-  Grid,
-  Link,
-  Text,
-  theme,
-  VStack,
-} from "@chakra-ui/react";
+import { Box, ChakraProvider, Flex, Spacer, Text } from "@chakra-ui/react";
 import * as React from "react";
-import { ColorModeSwitcher } from "./ColorModeSwitcher";
-import { Logo } from "./Logo";
+import { BTFooter } from "./components/BTFooter/BTFooter";
+import { BTHeader } from "./components/BTHeader/BTHeader";
+import { customTheme } from "./theme/customTheme";
 
 export const App = (): JSX.Element => (
-  <ChakraProvider theme={theme}>
+  <ChakraProvider theme={customTheme}>
     <Box textAlign="center" fontSize="xl">
-      <Grid minH="100vh" p={3}>
-        <ColorModeSwitcher justifySelf="flex-end" />
-        <VStack spacing={8}>
-          <Logo h="40vmin" pointerEvents="none" />
-          <Text>
-            Edit <Code fontSize="xl">src/App.tsx</Code> and save to reload.
-          </Text>
-          <Link
-            color="teal.500"
-            href="https://chakra-ui.com"
-            fontSize="2xl"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn Chakra
-          </Link>
-        </VStack>
-      </Grid>
+      <Box height="100vh">
+        <Flex direction="column" height="100%">
+          <BTHeader />
+
+          <Spacer />
+
+          <Text>Hello BPM tapper! :) </Text>
+
+          <Spacer />
+
+          <BTFooter />
+        </Flex>
+      </Box>
     </Box>
   </ChakraProvider>
 );
