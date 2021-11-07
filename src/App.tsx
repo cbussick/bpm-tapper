@@ -7,7 +7,6 @@ import { customTheme } from "./theme/customTheme";
 
 export const App = (): JSX.Element => {
   const [showMilliseconds, setShowMilliseconds] = useState<boolean>(false);
-
   const [playAudio, setPlayAudio] = useState<boolean>(true);
 
   return (
