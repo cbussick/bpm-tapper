@@ -6,6 +6,7 @@ import {
   StatHelpText,
   StatNumber,
   Text,
+  Tooltip,
   VStack,
 } from "@chakra-ui/react";
 import React from "react";
@@ -34,14 +35,16 @@ function BTBpmDisplay(props: BTBpmDisplayProps): JSX.Element {
             For example the <Kbd>Spacebar</Kbd>
           </Text>
         </ScaleFade>
-        <Stat onClick={copyBpmToClipboard} cursor="copy">
-          <StatNumber fontSize="9xl">
-            {props.showMilliseconds
-              ? getBpmInMillisecondFormat(bpm)
-              : Math.round(bpm)}
-          </StatNumber>
-          <StatHelpText fontSize="2xl">BPM</StatHelpText>
-        </Stat>
+        <Tooltip hasArrow label="Click to copy" placement="right">
+          <Stat onClick={copyBpmToClipboard} cursor="copy">
+            <StatNumber fontSize="9xl">
+              {props.showMilliseconds
+                ? getBpmInMillisecondFormat(bpm)
+                : Math.round(bpm)}
+            </StatNumber>
+            <StatHelpText fontSize="2xl">BPM</StatHelpText>
+          </Stat>
+        </Tooltip>
         <ScaleFade initialScale={0.9} in={isCalculating}>
           {/* `e.preventDefault()` in `onMouseDown` will prevent focusing the button after it is clicked
           This is important when users use the spacebar or enter for tapping, as having it focussed would lead

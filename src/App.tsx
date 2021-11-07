@@ -1,4 +1,11 @@
-import { Box, ChakraProvider, Flex, Spacer, Text } from "@chakra-ui/react";
+import {
+  Box,
+  ChakraProvider,
+  Container,
+  Flex,
+  Spacer,
+  Text,
+} from "@chakra-ui/react";
 import React, { useState } from "react";
 import BTBpmDisplay from "./components/BTBpmDisplay/BTBpmDisplay";
 import { BTFooter } from "./components/BTFooter/BTFooter";
@@ -22,15 +29,16 @@ export const App = (): JSX.Element => {
 
             <Spacer />
 
-            <Text fontSize="4xl">
-              Tap along with any song and figure out its tempo!
-            </Text>
+            <Container maxW="8xl">
+              <Text fontSize="4xl" mb={9}>
+                Tap along to any song to figure out its tempo! 🎵
+              </Text>
 
-            <BTBpmDisplay
-              playAudio={playAudio}
-              showMilliseconds={showMilliseconds}
-            />
-
+              <BTBpmDisplay
+                playAudio={playAudio}
+                showMilliseconds={showMilliseconds}
+              />
+            </Container>
             <Spacer />
 
             <BTFooter />

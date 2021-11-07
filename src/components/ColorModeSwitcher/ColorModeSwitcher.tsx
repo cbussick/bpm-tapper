@@ -16,13 +16,12 @@ export const ColorModeSwitcher: React.FC<ColorModeSwitcherProps> = (props) => {
   const SwitchIcon = useColorModeValue(FaMoon, FaSun);
 
   return (
-    <Tooltip label={switchLabel}>
+    <Tooltip hasArrow label={switchLabel}>
       <IconButton
         size="md"
         fontSize="lg"
         variant="ghost"
         color="current"
-        marginLeft="2"
         onClick={toggleColorMode}
         icon={<SwitchIcon />}
         aria-label={switchLabel}

@@ -100,7 +100,7 @@ export const useBTBpmDisplayViewModel = (
     document.body.removeChild(tempInputElement);
 
     toast({
-      title: "Copied!",
+      title: "BPM Copied!",
       description: "The BPM were copied to your clipboard.",
       status: "success",
       duration: 9000,
