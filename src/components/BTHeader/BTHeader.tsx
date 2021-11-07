@@ -23,7 +23,6 @@ export const BTHeader = (props: BTHeaderProps): JSX.Element => {
       </Heading>
       <Spacer />
       <Checkbox
-        size="lg"
         colorScheme="orange"
         onChange={() =>
           props.setShowMilliseconds((showMilliseconds) => !showMilliseconds)
