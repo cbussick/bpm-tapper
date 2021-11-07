@@ -25,12 +25,23 @@ function BTBpmDisplay(props: BTBpmDisplayProps): JSX.Element {
   const viewModelProps: BTBpmDisplayViewModelProps = props;
   const viewModel: BTBpmDisplayViewModel =
     useBTBpmDisplayViewModel(viewModelProps);
-  const { isCalculating, copyBpmToClipboard, bpm, resetBpm, audioTapRef } =
-    viewModel;
+  const {
+    isCalculating,
+    copyBpmToClipboard,
+    bpm,
+    resetBpm,
+    audioTapRef,
+    keyDownHandler,
+  } = viewModel;
 
   return (
     <>
-      <VStack spacing={3}>
+      <VStack
+        spacing={3}
+        onTouchStart={() => {
+          keyDownHandler();
+        }}
+      >
         <Collapse in={!isCalculating}>
           <Text fontSize="2xl" mb={3}>
             Tap any key to start ⌨️

@@ -15,4 +15,5 @@ export interface BTBpmDisplayViewModel {
   bpm: number;
   resetBpm: () => void;
   audioTapRef: RefObject<HTMLAudioElement>;
+  keyDownHandler: () => void;
 }

@@ -122,5 +122,6 @@ export const useBTBpmDisplayViewModel = (
     bpm,
     resetBpm,
     audioTapRef,
+    keyDownHandler,
   };
 };
