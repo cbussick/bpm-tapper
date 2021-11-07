@@ -1,5 +1,6 @@
 import {
   Button,
+  Collapse,
   Kbd,
   ScaleFade,
   Stat,
@@ -29,12 +30,12 @@ function BTBpmDisplay(props: BTBpmDisplayProps): JSX.Element {
   return (
     <>
       <VStack spacing={3}>
-        <ScaleFade initialScale={0.9} in={!isCalculating}>
+        <Collapse in={!isCalculating}>
           <Text fontSize="2xl">Tap any key to start ⌨️</Text>
           <Text fontSize="md">
             For example the <Kbd>Spacebar</Kbd>
           </Text>
-        </ScaleFade>
+        </Collapse>
         <Tooltip hasArrow label="Click to copy" placement="right">
           <Stat onClick={copyBpmToClipboard} cursor="copy">
             <StatNumber fontSize="9xl">
@@ -53,6 +54,7 @@ function BTBpmDisplay(props: BTBpmDisplayProps): JSX.Element {
             onMouseDown={(e) => e.preventDefault()}
             onClick={isCalculating ? resetBpm : undefined}
             cursor={isCalculating ? undefined : "default"}
+            display={isCalculating ? undefined : "none"}
           >
             Reset
           </Button>
