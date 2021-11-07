@@ -43,7 +43,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "echo 'no tests yet'",
-    "prepare": "husky install"
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx --max-warnings 0",
+    "typecheck": "tsc",
+    "full-check": "npm run typecheck && npm run lint && npm run test"
   },
   "eslintConfig": {
     "extends": "react-app"
