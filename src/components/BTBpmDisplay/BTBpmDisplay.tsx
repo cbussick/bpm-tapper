@@ -12,6 +12,7 @@ import {
 } from "@chakra-ui/react";
 import React from "react";
 import { getBpmInMillisecondFormat } from "../../helpers/getBpmInMillisecondFormat";
+import { textGradient } from "../../helpers/getTextGradient";
 import tapSound from "../../resources/sounds/tap-sound.wav";
 import {
   BTBpmDisplayProps,
@@ -31,14 +32,16 @@ function BTBpmDisplay(props: BTBpmDisplayProps): JSX.Element {
     <>
       <VStack spacing={3}>
         <Collapse in={!isCalculating}>
-          <Text fontSize="2xl">Tap any key to start ⌨️</Text>
+          <Text fontSize="2xl" mb={3}>
+            Tap any key to start ⌨️
+          </Text>
           <Text fontSize="md">
             💡 For example the <Kbd>Spacebar</Kbd>
           </Text>
         </Collapse>
         <Tooltip hasArrow label="Click to copy" placement="right">
           <Stat onClick={copyBpmToClipboard} cursor="copy">
-            <StatNumber fontSize="9xl">
+            <StatNumber fontSize="9xl" bgGradient={textGradient} bgClip="text">
               {props.showMilliseconds
                 ? getBpmInMillisecondFormat(bpm)
                 : Math.round(bpm)}
@@ -51,6 +54,8 @@ function BTBpmDisplay(props: BTBpmDisplayProps): JSX.Element {
           This is important when users use the spacebar or enter for tapping, as having it focussed would lead
           to problems then */}
           <Button
+            colorScheme="blue"
+            variant="outline"
             onMouseDown={(e) => e.preventDefault()}
             onClick={isCalculating ? resetBpm : undefined}
             cursor={isCalculating ? undefined : "default"}

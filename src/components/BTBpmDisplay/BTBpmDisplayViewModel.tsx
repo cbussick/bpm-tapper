@@ -102,7 +102,7 @@ export const useBTBpmDisplayViewModel = (
     toast({
       title: "BPM Copied!",
       description: "The BPM were copied to your clipboard.",
-      status: "success",
+      status: "info",
       duration: 9000,
       isClosable: true,
     });

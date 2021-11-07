@@ -10,6 +10,7 @@ import {
 } from "@chakra-ui/react";
 import React from "react";
 import { FaGithub, FaVolumeMute, FaVolumeUp } from "react-icons/fa";
+import { textGradient } from "../../helpers/getTextGradient";
 import { ColorModeSwitcher } from "../ColorModeSwitcher/ColorModeSwitcher";
 import { BTHeaderProps } from "./BTHeaderInterfaces";
 
@@ -28,7 +29,14 @@ export const BTHeader = (props: BTHeaderProps): JSX.Element => {
       alignSelf="flex-start"
     >
       <Spacer />
-      <Heading size="lg">BPM tapper</Heading>
+      <Heading
+        size="lg"
+        bgGradient={textGradient}
+        bgClip="text"
+        justifySelf="center"
+      >
+        BPM tapper
+      </Heading>
       <Flex justifySelf="flex-end">
         <Checkbox
           onChange={() =>
