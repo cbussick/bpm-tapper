@@ -32,6 +32,8 @@
     "eslint-plugin-jsx-a11y": "^6.4.1",
     "eslint-plugin-react": "^7.26.1",
     "eslint-plugin-react-hooks": "^4.2.0",
+    "husky": "^7.0.4",
+    "lint-staged": "^11.2.6",
     "prettier": "^2.4.1",
     "typescript": "^4.4.4"
   },
@@ -40,7 +42,8 @@
     "develop": "npm run start",
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "echo 'no tests yet'"
+    "test": "echo 'no tests yet'",
+    "prepare": "husky install"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -71,5 +74,13 @@
   },
   "bugs": {
     "url": "https://github.com/ChristopherBussick/cb-portfolio/issues"
+  },
+  "lint-staged": {
+    "**/*": [
+      "prettier --write --ignore-unknown"
+    ],
+    "*.{js,ts,jsx,tsx}": [
+      "eslint --fix --max-warnings=0"
+    ]
   }
 }
