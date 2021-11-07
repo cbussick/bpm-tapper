@@ -1,7 +1,13 @@
 {
-  "name": "my-app",
+  "name": "bpm-tapper",
   "version": "0.1.0",
   "private": true,
+  "description": "BPM tapper",
+  "author": {
+    "name": "Christopher Bussick",
+    "email": "bussick.christopher@gmail.com",
+    "url": "https://www.cbussick.dev/"
+  },
   "dependencies": {
     "@chakra-ui/react": "^1.6.12",
     "@emotion/react": "^11.5.0",
@@ -17,10 +23,11 @@
     "typescript": "^3.9.10"
   },
   "scripts": {
+    "dev": "npm run start",
+    "develop": "npm run start",
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "test": "echo 'no tests yet'"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -36,5 +43,20 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "keywords": [
+    "react",
+    "typescript",
+    "chakra-ui",
+    "cra",
+    "eslint",
+    "prettier"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ChristopherBussick/cb-portfolio"
+  },
+  "bugs": {
+    "url": "https://github.com/ChristopherBussick/cb-portfolio/issues"
   }
 }
