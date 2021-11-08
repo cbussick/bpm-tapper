@@ -81,7 +81,6 @@ export const useBTBpmDisplayViewModel = (
   }, [isCalculating, props.playAudio]);
 
   const copyBpmToClipboard = () => {
-    const tempInputElement = document.createElement("input");
     const integers = Math.floor(bpm);
     const bpmPreparedForDecimals = Math.round(bpm * 10000);
     const amountIntegerDigits = integers.toString().length;
@@ -90,22 +89,31 @@ export const useBTBpmDisplayViewModel = (
       .slice(amountIntegerDigits);
 
     const bpmInMSFormat = `${integers}.${decimalPlaces}`;
-    tempInputElement.value = props.showMilliseconds
+
+    const copiedValue = props.showMilliseconds
       ? bpmInMSFormat
       : Math.round(bpm).toString();
 
-    document.body.appendChild(tempInputElement);
-    tempInputElement.select();
-    document.execCommand("copy");
-    document.body.removeChild(tempInputElement);
-
-    toast({
-      title: "BPM Copied!",
-      description: "The BPM were copied to your clipboard.",
-      status: "info",
-      duration: 9000,
-      isClosable: true,
-    });
+    navigator.clipboard
+      .writeText(copiedValue)
+      .then(() => {
+        toast({
+          title: "BPM Copied!",
+          description: "The BPM were copied to your clipboard.",
+          status: "info",
+          duration: 9000,
+          isClosable: true,
+        });
+      })
+      .catch(() => {
+        toast({
+          title: "Something went wrong.",
+          description: "The BPM could not be copied to your clipboard.",
+          status: "error",
+          duration: 9000,
+          isClosable: true,
+        });
+      });
   };
 
   useEffect(() => {
