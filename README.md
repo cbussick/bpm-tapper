@@ -1,5 +1,7 @@
 # BPM Tapper 🎵
 
+A bpm tapper is a tool used in music production to figure out the tempo of a song, measured in beats per minute (bpm). The tool is usually part of a [DAW](https://en.wikipedia.org/wiki/Digital_audio_workstation), installed on a computer. This project is meant to make the tool browser-based.
+
 ## Available Scripts
 
 In the project directory, you can run:
