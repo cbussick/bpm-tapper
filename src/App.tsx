@@ -20,7 +20,7 @@ export const App = (): JSX.Element => {
   }, [setColorMode]);
 
   return (
-    <Box textAlign="center" fontSize="xl" height="100vh">
+    <Box textAlign="center" height="100vh">
       <Grid templateColumns="repeat(1fr, 3)" gap={6} height="100%">
         <BTHeader
           setShowMilliseconds={setShowMilliseconds}
@@ -29,7 +29,7 @@ export const App = (): JSX.Element => {
         />
 
         <Container maxW="8xl">
-          <Text fontSize="4xl" mb={9}>
+          <Text fontSize={{ base: "lg", md: "3xl", lg: "4xl" }} mb={9}>
             Tap along to any song to figure out its tempo! 🎵
           </Text>
 

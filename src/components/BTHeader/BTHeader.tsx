@@ -7,6 +7,7 @@ import {
   Link,
   Spacer,
   Tooltip,
+  useBreakpointValue,
 } from "@chakra-ui/react";
 import React from "react";
 import { FaGithub, FaVolumeMute, FaVolumeUp } from "react-icons/fa";
@@ -20,6 +21,9 @@ export const BTHeader = (props: BTHeaderProps): JSX.Element => {
   const VolumeSwitchIcon = props.playAudio ? FaVolumeUp : FaVolumeMute;
   const volumeSwitchText = `Turn volume ${props.playAudio ? "off" : "on"}`;
 
+  const checkboxSize = useBreakpointValue({ base: "sm", md: "md", lg: "lg" });
+  const titleSize = useBreakpointValue({ base: "sm", md: "md", lg: "lg" });
+
   return (
     <Grid
       as="header"
@@ -27,10 +31,11 @@ export const BTHeader = (props: BTHeaderProps): JSX.Element => {
       gap={6}
       py={2}
       alignSelf="flex-start"
+      alignItems="center"
     >
       <Spacer />
       <Heading
-        size="lg"
+        size={titleSize}
         bgGradient={textGradient}
         bgClip="text"
         justifySelf="center"
@@ -42,6 +47,8 @@ export const BTHeader = (props: BTHeaderProps): JSX.Element => {
           onChange={() =>
             props.setShowMilliseconds((showMilliseconds) => !showMilliseconds)
           }
+          size={checkboxSize}
+          whiteSpace="nowrap"
         >
           Show milliseconds
         </Checkbox>
@@ -51,7 +58,7 @@ export const BTHeader = (props: BTHeaderProps): JSX.Element => {
             aria-label={volumeSwitchText}
             icon={<VolumeSwitchIcon />}
             onClick={() => props.setPlayAudio((playAudio) => !playAudio)}
-            fontSize="lg"
+            fontSize={{ base: "sm", md: "md", lg: "lg" }}
             ml={4}
           />
         </Tooltip>
@@ -60,7 +67,7 @@ export const BTHeader = (props: BTHeaderProps): JSX.Element => {
             variant="ghost"
             aria-label={gitHubButtonLabel}
             icon={<FaGithub />}
-            fontSize="lg"
+            fontSize={{ base: "sm", md: "md", lg: "lg" }}
             as={Link}
             href="https://github.com/ChristopherBussick/bpm-tapper"
             target="_blank"

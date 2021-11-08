@@ -19,7 +19,7 @@ export const ColorModeSwitcher: React.FC<ColorModeSwitcherProps> = (props) => {
     <Tooltip hasArrow label={switchLabel}>
       <IconButton
         size="md"
-        fontSize="lg"
+        fontSize={{ base: "sm", md: "md", lg: "lg" }}
         variant="ghost"
         color="current"
         onClick={toggleColorMode}

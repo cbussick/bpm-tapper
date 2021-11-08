@@ -11,6 +11,7 @@ export const BTFooter = (): JSX.Element => (
       bgGradient={textGradient}
       bgClip="text"
       fontWeight="semibold"
+      fontSize={{ base: "md", md: "lg", lg: "xl" }}
     >
       Made by Christopher Bussick
     </Link>

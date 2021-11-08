@@ -43,21 +43,27 @@ function BTBpmDisplay(props: BTBpmDisplayProps): JSX.Element {
         }}
       >
         <Collapse in={!isCalculating}>
-          <Text fontSize="2xl" mb={3}>
+          <Text fontSize={{ base: "md", md: "xl", lg: "2xl" }} mb={3}>
             Tap any key to start ⌨️
           </Text>
-          <Text fontSize="md">
+          <Text fontSize={{ base: "xs", md: "sm", lg: "md" }}>
             💡 For example the <Kbd>Spacebar</Kbd>
           </Text>
         </Collapse>
         <Tooltip hasArrow label="Click to copy" placement="right">
           <Stat onClick={copyBpmToClipboard} cursor="copy">
-            <StatNumber fontSize="9xl" bgGradient={textGradient} bgClip="text">
+            <StatNumber
+              fontSize={{ base: "7xl", md: "8xl", lg: "9xl" }}
+              bgGradient={textGradient}
+              bgClip="text"
+            >
               {props.showMilliseconds
                 ? getBpmInMillisecondFormat(bpm)
                 : Math.round(bpm)}
             </StatNumber>
-            <StatHelpText fontSize="2xl">BPM</StatHelpText>
+            <StatHelpText fontSize={{ base: "lg", md: "xl", lg: "2xl" }}>
+              BPM
+            </StatHelpText>
           </Stat>
         </Tooltip>
         <ScaleFade initialScale={0.9} in={isCalculating}>
