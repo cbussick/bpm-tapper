@@ -8,6 +8,7 @@ import {
   StatNumber,
   Text,
   Tooltip,
+  useBreakpointValue,
   VStack,
 } from "@chakra-ui/react";
 import React from "react";
@@ -22,6 +23,8 @@ import {
 import { useBTBpmDisplayViewModel } from "./BTBpmDisplayViewModel";
 
 function BTBpmDisplay(props: BTBpmDisplayProps): JSX.Element {
+  const isSmallViewport = useBreakpointValue({ base: true, md: false });
+
   const viewModelProps: BTBpmDisplayViewModelProps = props;
   const viewModel: BTBpmDisplayViewModel =
     useBTBpmDisplayViewModel(viewModelProps);
@@ -51,7 +54,10 @@ function BTBpmDisplay(props: BTBpmDisplayProps): JSX.Element {
           </Text>
         </Collapse>
         <Tooltip hasArrow label="Click to copy" placement="right">
-          <Stat onClick={copyBpmToClipboard} cursor="copy">
+          <Stat
+            onClick={isSmallViewport ? undefined : copyBpmToClipboard}
+            cursor="copy"
+          >
             <StatNumber
               fontSize={{ base: "7xl", md: "8xl", lg: "9xl" }}
               bgGradient={textGradient}
