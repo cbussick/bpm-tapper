@@ -15,17 +15,19 @@ export const ColorModeSwitcher = (
   const switchLabel = `Switch to ${useColorModeValue("dark", "light")} mode`;
   const SwitchIcon = useColorModeValue(FaMoon, FaSun);
 
+  const { isSmallViewport, ...domProps } = props;
+
   return (
     <Tooltip hasArrow label={switchLabel}>
       <IconButton
         size="md"
         fontSize={{ base: "sm", md: "md", lg: "lg" }}
-        variant={props.isSmallViewport ? "outline" : "ghost"}
+        variant={isSmallViewport ? "outline" : "ghost"}
         color="current"
         onClick={toggleColorMode}
         icon={<SwitchIcon />}
         aria-label={switchLabel}
-        {...props}
+        {...domProps}
       />
     </Tooltip>
   );
