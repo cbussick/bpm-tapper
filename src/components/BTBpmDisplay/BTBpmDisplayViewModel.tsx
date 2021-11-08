@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useToast } from "@chakra-ui/react";
 import { useCallback, useEffect, useRef, useState } from "react";
 import {
@@ -78,7 +79,35 @@ export const useBTBpmDisplayViewModel = (
     if (props.playAudio) {
       playTapSound();
     }
-  }, [isCalculating, props.playAudio]);
+
+    // BPM Value without unit
+    const rawFontSizeKeyframeValue = props.rawBpmFontSize.substring(
+      0,
+      props.rawBpmFontSize.indexOf("rem")
+    );
+
+    // Put `+` in front of the variable to get addition instead of string concatenation
+    const rawAdjustedFontSizeKeyframeValue =
+      +rawFontSizeKeyframeValue + parseInt(rawFontSizeKeyframeValue, 10) * 0.05;
+
+    const fontSizeKeyframeValueWithUnit = `${rawAdjustedFontSizeKeyframeValue}rem`;
+
+    props.animationControls
+      .start({
+        fontSize: [
+          props.rawBpmFontSize,
+          fontSizeKeyframeValueWithUnit,
+          props.rawBpmFontSize,
+        ],
+        transition: { duration: 0.3 },
+      })
+      .catch(() => {});
+  }, [
+    isCalculating,
+    props.animationControls,
+    props.playAudio,
+    props.rawBpmFontSize,
+  ]);
 
   const copyBpmToClipboard = () => {
     const integers = Math.floor(bpm);

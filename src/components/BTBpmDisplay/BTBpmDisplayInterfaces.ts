@@ -1,3 +1,4 @@
+import { AnimationControls } from "framer-motion";
 import { RefObject } from "react";
 
 export interface BTBpmDisplayProps {
@@ -5,6 +6,8 @@ export interface BTBpmDisplayProps {
   playAudio: boolean;
 }
 export interface BTBpmDisplayViewModelProps {
+  animationControls: AnimationControls;
+  rawBpmFontSize: string;
   showMilliseconds: boolean;
   playAudio: boolean;
 }
