@@ -28,6 +28,8 @@ You can learn more in the
 
 To learn React, check out the [React documentation](https://reactjs.org/).
 
+To learn about Chakra UI, go to the [Chakra UI docs](https://chakra-ui.com/).
+
 To learn TypeScript, visit the [TypeScript docs](https://www.typescriptlang.org/).
 
 To learn about ESLint, visit the [ESLint docs](https://eslint.org/).
