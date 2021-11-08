@@ -23,6 +23,7 @@ export const App = (): JSX.Element => {
     <Box textAlign="center" height="100vh">
       <Grid templateColumns="repeat(1fr, 3)" gap={6} height="100%">
         <BTHeader
+          showMilliseconds={showMilliseconds}
           setShowMilliseconds={setShowMilliseconds}
           playAudio={playAudio}
           setPlayAudio={setPlayAudio}
