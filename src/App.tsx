@@ -1,4 +1,4 @@
-import { Box, Container, Grid, Text, useColorMode } from "@chakra-ui/react";
+import { Container, Grid, Text, useColorMode } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 import BTBpmDisplay from "./components/BTBpmDisplay/BTBpmDisplay";
 import { BTFooter } from "./components/BTFooter/BTFooter";
@@ -20,28 +20,31 @@ export const App = (): JSX.Element => {
   }, [setColorMode]);
 
   return (
-    <Box textAlign="center" height="100vh">
-      <Grid templateColumns="repeat(1fr, 3)" gap={6} height="100%">
-        <BTHeader
-          showMilliseconds={showMilliseconds}
-          setShowMilliseconds={setShowMilliseconds}
+    <Grid
+      templateColumns="repeat(1fr, 3)"
+      gap={6}
+      textAlign="center"
+      height="100vh"
+    >
+      <BTHeader
+        showMilliseconds={showMilliseconds}
+        setShowMilliseconds={setShowMilliseconds}
+        playAudio={playAudio}
+        setPlayAudio={setPlayAudio}
+      />
+
+      <Container maxW="8xl">
+        <Text fontSize={{ base: "lg", md: "3xl", lg: "4xl" }} mb={9}>
+          Tap along to any song to figure out its tempo! 🎵
+        </Text>
+
+        <BTBpmDisplay
           playAudio={playAudio}
-          setPlayAudio={setPlayAudio}
+          showMilliseconds={showMilliseconds}
         />
+      </Container>
 
-        <Container maxW="8xl">
-          <Text fontSize={{ base: "lg", md: "3xl", lg: "4xl" }} mb={9}>
-            Tap along to any song to figure out its tempo! 🎵
-          </Text>
-
-          <BTBpmDisplay
-            playAudio={playAudio}
-            showMilliseconds={showMilliseconds}
-          />
-        </Container>
-
-        <BTFooter />
-      </Grid>
-    </Box>
+      <BTFooter />
+    </Grid>
   );
 };
