@@ -11,10 +11,12 @@ import {
   useBreakpointValue,
   VStack,
 } from "@chakra-ui/react";
+import { motion, useAnimation } from "framer-motion";
 import React from "react";
 import { getBpmInMillisecondFormat } from "../../helpers/getBpmInMillisecondFormat";
 import { textGradient } from "../../helpers/getTextGradient";
 import tapSound from "../../resources/sounds/tap-sound.wav";
+import { customTheme } from "../../theme/customTheme";
 import {
   BTBpmDisplayProps,
   BTBpmDisplayViewModel,
@@ -24,8 +26,17 @@ import { useBTBpmDisplayViewModel } from "./BTBpmDisplayViewModel";
 
 function BTBpmDisplay(props: BTBpmDisplayProps): JSX.Element {
   const isSmallViewport = useBreakpointValue({ base: true, md: false });
+  const animationControls = useAnimation();
 
-  const viewModelProps: BTBpmDisplayViewModelProps = props;
+  const bpmFontSize = useBreakpointValue({ base: "7xl", md: "8xl", lg: "9xl" });
+  const rawBpmFontSize =
+    customTheme.fontSizes[bpmFontSize as keyof typeof customTheme.fontSizes];
+
+  const viewModelProps: BTBpmDisplayViewModelProps = {
+    animationControls,
+    rawBpmFontSize,
+    ...props,
+  };
   const viewModel: BTBpmDisplayViewModel =
     useBTBpmDisplayViewModel(viewModelProps);
   const {
@@ -59,13 +70,15 @@ function BTBpmDisplay(props: BTBpmDisplayProps): JSX.Element {
             cursor="copy"
           >
             <StatNumber
-              fontSize={{ base: "7xl", md: "8xl", lg: "9xl" }}
+              fontSize={bpmFontSize}
               bgGradient={textGradient}
               bgClip="text"
             >
-              {props.showMilliseconds
-                ? getBpmInMillisecondFormat(bpm)
-                : Math.round(bpm)}
+              <motion.span animate={animationControls}>
+                {props.showMilliseconds
+                  ? getBpmInMillisecondFormat(bpm)
+                  : Math.round(bpm)}
+              </motion.span>
             </StatNumber>
             <StatHelpText fontSize={{ base: "lg", md: "xl", lg: "2xl" }}>
               BPM
