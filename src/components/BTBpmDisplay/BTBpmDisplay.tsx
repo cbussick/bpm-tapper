@@ -12,10 +12,8 @@ import {
   VStack,
 } from "@chakra-ui/react";
 import { motion, useAnimation } from "framer-motion";
-import React from "react";
 import { getBpmInMillisecondFormat } from "../../helpers/getBpmInMillisecondFormat";
 import { textGradient } from "../../helpers/getTextGradient";
-import tapSound from "../../resources/sounds/tap-sound.wav";
 import { customTheme } from "../../theme/customTheme";
 import {
   BTBpmDisplayProps,
@@ -39,14 +37,8 @@ function BTBpmDisplay(props: BTBpmDisplayProps): JSX.Element {
   };
   const viewModel: BTBpmDisplayViewModel =
     useBTBpmDisplayViewModel(viewModelProps);
-  const {
-    isCalculating,
-    copyBpmToClipboard,
-    bpm,
-    resetBpm,
-    audioTapRef,
-    keyDownHandler,
-  } = viewModel;
+  const { isCalculating, copyBpmToClipboard, bpm, resetBpm, keyDownHandler } =
+    viewModel;
 
   return (
     <>
@@ -87,7 +79,7 @@ function BTBpmDisplay(props: BTBpmDisplayProps): JSX.Element {
         </Tooltip>
         <ScaleFade initialScale={0.9} in={isCalculating}>
           {/* `e.preventDefault()` in `onMouseDown` will prevent focusing the button after it is clicked
-          This is important when users use the spacebar or enter for tapping, as having it focussed would lead
+          This is important when users use the spacebar or enter for tapping, as having it focused would lead
           to problems then */}
           <Button
             colorScheme="blue"
@@ -101,8 +93,6 @@ function BTBpmDisplay(props: BTBpmDisplayProps): JSX.Element {
           </Button>
         </ScaleFade>
       </VStack>
-      {/* eslint-disable-next-line jsx-a11y/media-has-caption */}
-      <audio ref={audioTapRef} src={tapSound} />
     </>
   );
 }

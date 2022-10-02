@@ -1,5 +1,4 @@
 import { AnimationControls } from "framer-motion";
-import { RefObject } from "react";
 
 export interface BTBpmDisplayProps {
   showMilliseconds: boolean;
@@ -17,6 +16,5 @@ export interface BTBpmDisplayViewModel {
   copyBpmToClipboard: () => void;
   bpm: number;
   resetBpm: () => void;
-  audioTapRef: RefObject<HTMLAudioElement>;
   keyDownHandler: () => void;
 }
