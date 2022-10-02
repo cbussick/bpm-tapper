@@ -1,5 +1,5 @@
 import { Container, Grid, Text, useColorMode } from "@chakra-ui/react";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import BTBpmDisplay from "./components/BTBpmDisplay/BTBpmDisplay";
 import { BTFooter } from "./components/BTFooter/BTFooter";
 import { BTHeader } from "./components/BTHeader/BTHeader";

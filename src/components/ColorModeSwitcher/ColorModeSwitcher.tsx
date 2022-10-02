@@ -2,9 +2,8 @@ import {
   IconButton,
   Tooltip,
   useColorMode,
-  useColorModeValue,
+  useColorModeValue
 } from "@chakra-ui/react";
-import React from "react";
 import { FaMoon, FaSun } from "react-icons/fa";
 import { ColorModeSwitcherProps } from "./ColorModeSwitcherInterfaces";
 

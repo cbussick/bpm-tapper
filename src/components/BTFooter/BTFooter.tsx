@@ -1,5 +1,4 @@
 import { Flex, Link } from "@chakra-ui/react";
-import React from "react";
 import { textGradient } from "../../helpers/getTextGradient";
 
 export const BTFooter = (): JSX.Element => (
