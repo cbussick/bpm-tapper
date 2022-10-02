@@ -1,6 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useToast } from "@chakra-ui/react";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
+import tapSound from "../../resources/sounds/tap-sound.wav";
 import {
   BTBpmDisplayViewModel,
   BTBpmDisplayViewModelProps,
@@ -12,8 +13,6 @@ let lastTapTimeDifferences: number[] = [];
 export const useBTBpmDisplayViewModel = (
   props: BTBpmDisplayViewModelProps
 ): BTBpmDisplayViewModel => {
-  const audioTapRef = useRef<HTMLAudioElement>(null);
-
   const [bpm, setBpm] = useState<number>(0);
   const [isCalculating, setCalculating] = useState<boolean>(false);
 
@@ -60,13 +59,13 @@ export const useBTBpmDisplayViewModel = (
     setBpm(0);
   };
 
+  const tapAudio = new Audio(tapSound);
+
   const playTapSound = () => {
-    if (audioTapRef.current) {
-      if (audioTapRef.current?.paused) {
-        audioTapRef.current.play().catch(() => {});
-      } else {
-        audioTapRef.current.currentTime = 0;
-      }
+    if (tapAudio.paused) {
+      tapAudio.play().catch(() => {});
+    } else {
+      tapAudio.currentTime = 0;
     }
   };
 
@@ -158,7 +157,6 @@ export const useBTBpmDisplayViewModel = (
     copyBpmToClipboard,
     bpm,
     resetBpm,
-    audioTapRef,
     keyDownHandler,
   };
 };
